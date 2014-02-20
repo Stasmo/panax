@@ -1,0 +1,138 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: @StasmoPanaxBundle/Resources/config/admin.yml }
+    - { resource: @StasmoPanaxBundle/Resources/config/security.yml }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: en }
+    secret:          %secret%
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  %locale%
+    session:         ~
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [StasmoPanaxBundle]
+    #java: /usr/bin/java
+    filters:
+        lessphp:
+            file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
+            apply_to: "\.less$"
+        cssrewrite: ~
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+braincrafted_bootstrap:
+    less_filter: lessphp
+
+# for jackalope-doctrine-dbal
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        path:     %database_path%
+        charset:  UTF8
+
+# # cmf configuration
+# doctrine_phpcr:
+#     # configure the PHPCR session
+#     session:
+#         backend: %phpcr_backend%
+#         workspace: %phpcr_workspace%
+#         username: %phpcr_user%
+#         password: %phpcr_pass%
+#     # enable the ODM layer
+#     odm:
+#         auto_mapping: true
+#         auto_generate_proxy_classes: %kernel.debug%
+
+doctrine_mongodb:
+    connections:
+        default:
+            server: mongodb://localhost:27017
+            options: {}
+    default_database: kickass
+    document_managers:
+        default:
+            auto_mapping: true
+
+# liip_doctrine_cache:
+#     namespaces:
+#         meta:
+#             type: file_system
+#         nodes:
+#             type: file_system
+liip_imagine:
+    filter_sets:
+        thumb_small:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }
+        thumb_medium:
+            quality: 75
+            filters:
+                thumbnail: { size: [300, 200], mode: outbound }
+# cmf_core:
+#     persistence:
+#         phpcr:
+#             enabled: true
+#             basepath: /cms
+#     publish_workflow:
+#         enabled: false
+#     multilang:
+#         locales: %locales%
+
+# cmf_blog:
+#     use_sonata_admin:     auto
+#     blog_basepath:        /cms/blog
+#     class:
+#         blog_admin: Symfony\Cmf\Bundle\BlogBundle\Admin\BlogAdmin # Optional
+#         post_admin: Symfony\Cmf\Bundle\BlogBundle\Admin\PostAdmin # Optional
+#         blog: Symfony\Cmf\Bundle\BlogBundle\Document\Blog # Optional
+#         post: Symfony\Cmf\Bundle\BlogBundle\Document\Post # Optional
+
+# cmf_create:
+#     editor_base_path: /bundles/cmfcreate/vendor/ckeditor/
+
+# cmf_simple_cms:
+#     routing:
+#         templates_by_class:
+#             Symfony\Cmf\Bundle\SimpleCmsBundle\Doctrine\Phpcr\Page: CmfSimpleCmsBundle:Page:index.html.twig
+#         controllers_by_class:
+#             Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute: cmf_routing.redirect_controller:redirectAction
+
+knp_menu:
+    twig: true
+
+# lunetics_locale:
+#     strict_mode: true
+#     guessing_order:
+#         - cookie
+#         - router
+#         - browser
+#     allowed_locales: %locales%
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        # Your other blocks
+

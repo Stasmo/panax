@@ -1,0 +1,102 @@
+{
+    "name": "symfony-cmf/standard-edition",
+    "license": "MIT",
+    "type": "project",
+    "description": "The \"Symfony CMF Standard Edition\" distribution",
+    "authors": [
+        {
+            "name": "Symfony CMF Community",
+            "homepage": "https://github.com/symfony-cmf/SimpleCmsBundle/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "minimum-stability": "stable",
+    "repositories": {
+        "jquery": {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.10.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.10.2.js",
+                    "type": "file"
+                }
+            }
+        }
+    },
+
+
+
+
+
+
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*",
+        "sensio/framework-extra-bundle": "*",
+        "twig/extensions": "1.0.*",
+        "symfony/monolog-bundle": "2.3.*",
+        "symfony/assetic-bundle": "2.3.*",
+        "sensio/distribution-bundle": "2.3.*",
+        "doctrine/doctrine-bundle": "1.2.*",
+        "doctrine/mongodb-odm-bundle": "dev-master",
+        "doctrine/mongodb-odm": "dev-master",
+        "doctrine/mongodb-odm": "dev-master",
+        "doctrine/phpcr-bundle": "1.0.*",
+        "doctrine/phpcr-odm": "1.0.*",
+        "liip/doctrine-cache-bundle": "1.0.*",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "liip/imagine-bundle": "~0.12",
+        "wjzijderveld/check-bundles": "1.0.*@dev",
+        "sensio/generator-bundle": "2.3.*",
+        "braincrafted/bootstrap-bundle": "2.0.*@dev",
+        "leafo/lessphp": "0.4.0",
+        "twbs/bootstrap": "3.0.0",
+        "jquery/jquery":  "1.10.*",
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/doctrine-mongodb-admin-bundle": "dev-master",
+        "symfony-cmf/media-bundle": "*"
+    },
+    "require-dev": {
+        "liip/functional-test-bundle": "1.0.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+        ],
+        "post-update-cmd": [
+            "WillemJan\\CheckBundles\\Composer\\CheckBundles::postPackageUpdate",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "checkbundles-ignore": [
+            "Liip\\FunctionalTestBundle\\LiipFunctionalTestBundle",
+            "Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle",
+            "Sonata\\BlockBundle\\SonataBlockBundle",
+            "Symfony\\Cmf\\Bundle\\BlockBundle\\CmfBlockBundle"
+        ],
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "www",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

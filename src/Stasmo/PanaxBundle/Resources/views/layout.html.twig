@@ -1,0 +1,148 @@
+<html>
+<head>
+	<title>Panax</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+    {% stylesheets '@StasmoPanaxBundle/Resources/public/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
+
+
+    <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+    {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+</head>
+<body>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="alert alert-info">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-danger">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<img id='penrose' src="/bundles/stasmopanax/images/penrose.svg" class='img-responsive pull-right'>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			<div id="header">
+				<a href="/"><img src="/bundles/stasmopanax/images/panax.png" class='img-responsive'></a>
+			</div>
+
+
+			<div class="row">
+				<div class="col-sm-12" id='nav'>
+					<ul class="nav nav-pills hidden-xs">
+				  	    <li id='nav-home'><a href="{{ path('stasmo_panax_homepage') }}">Home</a></li>
+					    <li id='nav-music'><a href="{{   path('stasmo_panax_music') }}">Music</a></li>
+					    <li id='nav-events'><a href="{{ path('stasmo_panax_events') }}">Events</a></li>
+					    <li id='nav-videos'><a href="{{ path('stasmo_panax_videos') }}">Videos</a></li>
+					    <li id='nav-pictures'><a href="{{ path('stasmo_panax_pics') }}">Pictures</a></li>
+					    <li id='nav-biography'><a href="{{ path('stasmo_panax_bio') }}">Biography</a></li>
+					</ul>
+					<div class="dropdown">
+					  <a id="nav-dropdown" role="button" data-toggle="dropdown" data-target="#" href="/page.html" class='visible-xs'>
+					    Menu <span class="caret"></span>
+					  </a>
+					  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					    <li><a href="{{ path('stasmo_panax_homepage') }}">Home</a></li>
+					    <li><a href="{{ path('stasmo_panax_music') }}">Music</a></li>
+					    <li><a href="{{ path('stasmo_panax_events') }}">Events</a></li>
+					    <li><a href="{{ path('stasmo_panax_videos') }}">Videos</a></li>
+					    <li><a href="{{ path('stasmo_panax_pics') }}">Pictures</a></li>
+					    <li><a href="{{ path('stasmo_panax_bio') }}">Biography</a></li>
+					  </ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3 text-center hidden-xs">
+			<img id='penrose-header' src="/bundles/stasmopanax/images/penrose.svg">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12" id="body">
+			{% block body %}{% endblock %}
+		</div>
+	</div>
+	<footer id='footer'>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="text-right hidden-sm hidden-xs">
+					<img src="/bundles/stasmopanax/images/Penrose_3.svg" style='width: 250px; height: 100px;' class='pull-left'>
+					<a href="http://twitter.com/PANAXish"><img class='social' src="/bundles/stasmopanax/images/social/Panax_social-01.svg" class='img-responsive' style='width: 55px; height: 55px;'></a>
+					<a href="http://soundcloud.com/PANAXish"><img class='social' src="/bundles/stasmopanax/images/social/Panax_social-02.svg" class='img-responsive' style='width: 55px; height: 55px;'></a>
+					<a href="http://facebook.com/PANAXish"><img class='social' src="/bundles/stasmopanax/images/social/Panax_social-03.svg" class='img-responsive' style='width: 55px; height: 55px;'></a>
+					<a href="http://panaxish.bandcamp.com/"><img class='social' src="/bundles/stasmopanax/images/social/Panax_social-06.svg" class='img-responsive' style='width: 55px; height: 55px;'></a>
+					<a href="http://www.youtube.com/watch?v=_KquXUZyvGE"><img class='social' src="/bundles/stasmopanax/images/social/Panax_social-05.svg" class='img-responsive' style='width: 55px; height: 55px;'></a>
+					<a href="http://instagram.com/PANAXish"><img class='social' src="/bundles/stasmopanax/images/social/Panax_social-04.svg" class='img-responsive' style='width: 55px; height: 55px;'></a>
+				</div>
+				<div class="row hidden-lg hidden-md">
+					<div class="col-xs-12">
+						<img src="/bundles/stasmopanax/images/Penrose_3.svg" class='pull-left'>
+					</div>
+				</div>
+				<div class="row hidden-lg hidden-md">
+					<div class="col-xs-4">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="http://twitter.com/PANAXish">
+									<img class='img-responsive'  src="/bundles/stasmopanax/images/social/Panax_social-01.svg" class='img-responsive'></a>
+							</div>
+							<div class="col-xs-6">
+								<a href="http://soundcloud.com/PANAXish">
+									<img class='img-responsive' src="/bundles/stasmopanax/images/social/Panax_social-02.svg" class='img-responsive'></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="http://facebook.com/PANAXish">
+									<img class='img-responsive' src="/bundles/stasmopanax/images/social/Panax_social-03.svg" class='img-responsive'></a>
+							</div>
+							<div class="col-xs-6">
+								<a href="http://panaxish.bandcamp.com/">
+									<img class='img-responsive' src="/bundles/stasmopanax/images/social/Panax_social-06.svg" class='img-responsive'></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="http://www.youtube.com/watch?v=_KquXUZyvGE">
+									<img class='img-responsive' src="/bundles/stasmopanax/images/social/Panax_social-05.svg" class='img-responsive'></a>
+							</div>
+							<div class="col-xs-6">
+								<a href="http://instagram.com/PANAXish">
+									<img class='img-responsive' src="/bundles/stasmopanax/images/social/Panax_social-04.svg" class='img-responsive'></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Include all JavaScripts, compiled by Assetic -->
+<script src="{{ asset('/js/bootstrap.js') }}"></script>
+{% javascripts '@StasmoPanaxBundle/Resources/public/js/*' %}
+<script type="text/javascript" src='{{ asset_url }}'></script>
+{% endjavascripts %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

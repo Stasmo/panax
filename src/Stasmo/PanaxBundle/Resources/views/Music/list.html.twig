@@ -1,0 +1,15 @@
+{% extends 'StasmoPanaxBundle::layout.html.twig' %}
+
+{% block body %}
+<table class="table">
+{% for music in musics %}
+<tr>
+	<td>{{ music.name }}</td>
+	<td>{{ music.embedString|e }}</td>
+	<td>{% if music.left %}left{% else %}right{% endif %}</td>
+	<td><a href="/music/edit/{{ music.id }}">Edit</a></td>
+	<td><a href="/music/delete/{{ music.id }}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'StasmoPanaxBundle::layout.html.twig' %}
+
+{% block body %}
+{% for event in events %}
+	<div class="row">
+		<div class="col-sm-5 col-sm-offset-2">
+			<h2>
+				{% if event.eventLink %}
+					<a href="{{ event.eventLink }}">
+				{% endif %}
+				{{ event.name }}
+				{% if event.eventLink %}
+					</a>
+				{% endif %}
+			</h2>
+			<h3>{{ event.formattedDate }}</h3>
+			<h3>{{ event.description }}</h3>
+			<h3>
+				{% if event.ticketLink %}
+					<a href="{{ event.ticketLink }}">
+				{% endif %}
+				{{ event.ticketText }}
+				{% if event.ticketLink %}
+					</a>
+				{% endif %}
+			</h3>
+		</div>
+		{% if event.imageLocation %}
+			<div class="col-sm-4">
+				<img class='img-responsive' src="{{ event.imageLocation | imagine_filter('thumb_medium') }}">
+			</div>
+		{% endif %}
+	</div>
+{% endfor %}
+{% if events|length == 0 %}
+	<h2>No events right now, check back later.</h2>
+{% endif %}
+{% endblock %}

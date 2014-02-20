@@ -1,0 +1,29 @@
+stasmo_panax_homepage:
+    pattern:  /
+    defaults: { _controller: StasmoPanaxBundle:Music:index }
+
+stasmo_panax_bio:
+    pattern: /bio
+    defaults: { _controller: StasmoPanaxBundle:Biography:index }
+
+stasmo_panax_music:
+    pattern: /music
+    defaults: { _controller: StasmoPanaxBundle:Music:index }
+
+stasmo_panax_events:
+    pattern: /events
+    defaults: { _controller: StasmoPanaxBundle:Events:index }
+
+stasmo_panax_videos:
+    pattern: /videos
+    defaults: { _controller: StasmoPanaxBundle:Videos:index }
+
+login_check:
+    path: /login_check
+
+logout:
+    path:   /logout
+
+app_routes:
+    resource: "@StasmoPanaxBundle/Controller"
+    type:     annotation

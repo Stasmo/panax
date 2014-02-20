@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 360 360" enable-background="new 0 0 360 360" xml:space="preserve">
+<g>
+	<g>
+		<defs>
+			<polygon id="SVGID_1_" points="199.8,21.8 198.8,20.1 156.2,20 0,296 22.1,333.3 344.3,333.4 360.4,294.4 			"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_2_)">
+			<g>
+				
+					<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="3.9837" y1="151.7677" x2="341.8578" y2="151.7677" gradientTransform="matrix(1 0 0 -1 0 360)">
+					<stop  offset="5.600000e-03" style="stop-color:#BBBCBE"/>
+					<stop  offset="0.1954" style="stop-color:#989CA0"/>
+					<stop  offset="0.3129" style="stop-color:#C0C2C5"/>
+					<stop  offset="0.4785" style="stop-color:#FFFFFF"/>
+					<stop  offset="0.7684" style="stop-color:#C1C3C6"/>
+					<stop  offset="0.9892" style="stop-color:#FFFFFF"/>
+				</linearGradient>
+				<polygon fill="url(#SVGID_3_)" points="341.9,329.8 197,86.6 178.9,120 282.4,296 4,296 24.1,329.8 				"/>
+				
+					<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="276.9291" y1="227.2456" x2="128.3874" y2="-30.036" gradientTransform="matrix(1 0 0 -1 0 360)">
+					<stop  offset="6.990000e-02" style="stop-color:#D1D3D4;stop-opacity:0.85"/>
+					<stop  offset="0.19" style="stop-color:#AFB1B4;stop-opacity:0.8831"/>
+					<stop  offset="0.3065" style="stop-color:#939598;stop-opacity:0.9152"/>
+					<stop  offset="0.5054" style="stop-color:#A7A9AC"/>
+					<stop  offset="0.6828" style="stop-color:#C8CACC"/>
+					<stop  offset="0.8763" style="stop-color:#E6E7E8"/>
+				</linearGradient>
+				<polygon fill="url(#SVGID_4_)" points="341.9,329.8 197,86.6 178.9,120 282.4,296 4,296 24.1,329.8 				"/>
+				<polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="341.9,329.8 197,86.6 178.9,120 
+					282.4,296 4,296 24.1,329.8 				"/>
+			</g>
+			<polygon fill="#F26640" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="196.7,23.5 52.2,267.5 93.3,268.1 
+				196.4,92 341.9,329.8 356.4,294.7 			"/>
+			<polygon fill="#7F3F98" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="4.1,296 282.4,296 263.3,263.7 
+				58.4,263.7 196.8,23.5 158.2,23.5 			"/>
+		</g>
+	</g>
+</g>
+</svg>
