@@ -28,10 +28,6 @@
     },
 
 
-
-
-
-
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
@@ -40,13 +36,8 @@
         "symfony/monolog-bundle": "2.3.*",
         "symfony/assetic-bundle": "2.3.*",
         "sensio/distribution-bundle": "2.3.*",
+        "doctrine/orm": "2.3.*",
         "doctrine/doctrine-bundle": "1.2.*",
-        "doctrine/mongodb-odm-bundle": "dev-master",
-        "doctrine/mongodb-odm": "dev-master",
-        "doctrine/mongodb-odm": "dev-master",
-        "doctrine/phpcr-bundle": "1.0.*",
-        "doctrine/phpcr-odm": "1.0.*",
-        "liip/doctrine-cache-bundle": "1.0.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "liip/imagine-bundle": "~0.12",
         "wjzijderveld/check-bundles": "1.0.*@dev",
@@ -55,9 +46,8 @@
         "leafo/lessphp": "0.4.0",
         "twbs/bootstrap": "3.0.0",
         "jquery/jquery":  "1.10.*",
-        "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/doctrine-mongodb-admin-bundle": "dev-master",
-        "symfony-cmf/media-bundle": "*"
+        "doctrine/phpcr-odm": "~1.0.1",
+        "egeloen/ckeditor-bundle": "~2.0"
     },
     "require-dev": {
         "liip/functional-test-bundle": "1.0.*"
@@ -86,12 +76,10 @@
     "extra": {
         "checkbundles-ignore": [
             "Liip\\FunctionalTestBundle\\LiipFunctionalTestBundle",
-            "Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle",
-            "Sonata\\BlockBundle\\SonataBlockBundle",
-            "Symfony\\Cmf\\Bundle\\BlockBundle\\CmfBlockBundle"
+            "Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle"
         ],
         "symfony-app-dir": "app",
-        "symfony-web-dir": "www",
+        "symfony-web-dir": "web",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },

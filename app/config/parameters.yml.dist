@@ -1,10 +1,10 @@
 parameters:
-    database_driver:   pdo_sqlite
+    database_driver:   pdo_mysql
     database_path: '%kernel.root_dir%/app.sqlite'
-    database_host: null
+    database_host: localhost
     database_port: null
-    database_name: null
-    database_user: null
+    database_name: panaxish_panax
+    database_user: panaxish
     database_password: null
 
     phpcr_backend:
@@ -26,3 +26,5 @@ parameters:
     locale:            en
     locales:           [en, de]
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    admin_pass:        password

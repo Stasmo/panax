@@ -2,32 +2,33 @@
 
 {% block body %}
 {% for event in events %}
-	<div class="row">
-		<div class="col-sm-5 col-sm-offset-2">
+	<div class="row event">
+		<div class="col-sm-6 col-md-5 col-md-offset-2">
 			<h2>
 				{% if event.eventLink %}
-					<a href="{{ event.eventLink }}">
+				<a href="{{ event.eventLink }}">
 				{% endif %}
 				{{ event.name }}
 				{% if event.eventLink %}
-					</a>
+				</a>
 				{% endif %}
 			</h2>
-			<h3>{{ event.formattedDate }}</h3>
-			<h3>{{ event.description }}</h3>
+			<h3 class='event-date'>{{ event.date.timestamp }}</h3>
+			<div>{{ event.description|raw }}</div>
 			<h3>
 				{% if event.ticketLink %}
-					<a href="{{ event.ticketLink }}">
+				<a href="{{ event.ticketLink }}">
 				{% endif %}
 				{{ event.ticketText }}
 				{% if event.ticketLink %}
-					</a>
+				</a>
 				{% endif %}
 			</h3>
+			<h2 class='visible-xs'><a href="{{ event.imageLocation }}">Event poster</a></h2>
 		</div>
 		{% if event.imageLocation %}
-			<div class="col-sm-4">
-				<img class='img-responsive' src="{{ event.imageLocation | imagine_filter('thumb_medium') }}">
+			<div class="col-sm-6 col-md-3 hidden-xs">
+				<a href="{{ event.imageLocation }}"><img class='img-responsive' src="{{ event.imageLocation }}"></a>
 			</div>
 		{% endif %}
 	</div>
@@ -35,4 +36,14 @@
 {% if events|length == 0 %}
 	<h2>No events right now, check back later.</h2>
 {% endif %}
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$dates = $('.event-date');
+	$dates.each(function(){
+		$(this).text('When: ' + moment($(this).text(), 'X').format('dddd, MMM Do - hA'));
+	});
+});
+</script>
 {% endblock %}

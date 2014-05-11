@@ -4,17 +4,18 @@
 <div id="images" class='row'>
 	{% for image in images %}
 	<div class="col-xs-4">
-		<img class='img-responsive' src="{{ image.webLocation | imagine_filter('thumb_medium') }}">
+		<a href="{{ image.webLocation }}" class='fancy'>
+			<img class='img-responsive' src="{{ image.webLocation | imagine_filter('thumb_medium') }}">
+		</a>
 	</div>
 	{% endfor %}
 </div>
 {% endblock %}
-
 {% block javascripts %}
-<script type="text/javascript" src="/bundles/stasmopanax/js/jquery.wookmark.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	//$("#images").wookmark();
+	$images = $('.fancy');
+	$images.fancybox();
 })
 </script>
 {% endblock %}

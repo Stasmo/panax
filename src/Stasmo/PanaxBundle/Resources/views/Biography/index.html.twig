@@ -3,15 +3,10 @@
 {% block body %}
 <div class="row">
 	<div class="col-sm-8">
-		<img src="/bundles/stasmopanax/images/bio-small.jpg" class='img-responsive img-rounded'>
+		<img src="{{ bio.imageLocation }}" class='img-responsive img-rounded'>
 	</div>
 	<div class="col-sm-4">
-		<p style='text-align: justify;'>
-			Panax is becoming a staple of the Vancouver Hip Hop scene. Born in 1989 in Victoria, British Columbia, Canada he was shuffled to six different cities in B.C. by the age of eight. He finally settled in Port Coquitlam where he spent the majority of his childhood. Growing up, Panax was musically influenced by his mother who listened to folk, country and classic rock. During his adolescents he submerged himself in heavy metal music fronting multiple metal bands and getting a taste for bold performances. It wasn't until his late teens that Panax found Hip Hop. It was Hip Hop's ability to convey complex stories through lyricism that resonated with him. Listening and writing quickly became Panax's passion.
-		</p>
-		<p style='text-align: justify;'>
-			He debuted with his five song EP "Honeymoon Jaguar" June 8th, 2013 and is currently working on a full length album scheduled for release spring 2014. Most recently his music video for "Good Raps" was featured on HipHopVancouver.com. Panax's unique lyricism and energetic stage presence combine for a polished compelling performance. Having already shared the stage with local legends such as Prevail and Snak the Ripper, Panax is a talent to follow and a name to remember.
-		</p>
+		{{ bio.body|raw }}
 	</div>
 </div>
 {% endblock %}

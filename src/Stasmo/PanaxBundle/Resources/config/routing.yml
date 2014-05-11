@@ -1,6 +1,6 @@
 stasmo_panax_homepage:
     pattern:  /
-    defaults: { _controller: StasmoPanaxBundle:Music:index }
+    defaults: { _controller: StasmoPanaxBundle:Default:index }
 
 stasmo_panax_bio:
     pattern: /bio

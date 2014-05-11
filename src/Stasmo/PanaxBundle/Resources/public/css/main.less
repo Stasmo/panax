@@ -1,6 +1,8 @@
+@panax_orange: #f26640;
+
 body{
 	a{
-		color: #f26640;
+		color: @panax_orange;
 	}
 	a:hover{
 		color: #d04420;
@@ -29,7 +31,12 @@ body{
 		}
 		li.active a{
 			color: black;
-			background-color: white;
+			background: none;
+		    text-shadow:
+		    -1px -1px 0 @panax_orange,
+		    1px -1px 0 @panax_orange,
+		    -1px 1px 0 @panax_orange,
+		    1px 1px 0 @panax_orange;
 		}
 	}
 
@@ -48,13 +55,13 @@ body{
 		}
 	}
 }
-#penrose-header{
-	max-height: 300px;
-	max-width: 300px;
-}
 
 #penrose{
 	position: fixed;
 	opacity: 0.25;
-	max-height: 100%;
+	height: 100%;
+	width: 100%;
+	background-image: url(/bundles/stasmopanax/images/penrose.svg);
+	background-position: center center;
+	background-repeat: no-repeat;
 }

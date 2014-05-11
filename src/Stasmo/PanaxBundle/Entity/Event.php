@@ -1,0 +1,253 @@
+<?php
+
+namespace Stasmo\PanaxBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Event
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Event
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="eventLink", type="text", nullable=true)
+     */
+    private $eventLink;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ticketLink", type="text", nullable=true)
+     */
+    private $ticketLink;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ticketText", type="text", nullable=true)
+     */
+    private $ticketText;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imageLocation", type="text", nullable=true)
+     */
+    private $imageLocation;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Event
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set eventLink
+     *
+     * @param string $eventLink
+     * @return Event
+     */
+    public function setEventLink($eventLink)
+    {
+        $this->eventLink = $eventLink;
+    
+        return $this;
+    }
+
+    /**
+     * Get eventLink
+     *
+     * @return string 
+     */
+    public function getEventLink()
+    {
+        return $this->eventLink;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Event
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set ticketLink
+     *
+     * @param string $ticketLink
+     * @return Event
+     */
+    public function setTicketLink($ticketLink)
+    {
+        $this->ticketLink = $ticketLink;
+    
+        return $this;
+    }
+
+    /**
+     * Get ticketLink
+     *
+     * @return string 
+     */
+    public function getTicketLink()
+    {
+        return $this->ticketLink;
+    }
+
+    /**
+     * Set ticketText
+     *
+     * @param string $ticketText
+     * @return Event
+     */
+    public function setTicketText($ticketText)
+    {
+        $this->ticketText = $ticketText;
+    
+        return $this;
+    }
+
+    /**
+     * Get ticketText
+     *
+     * @return string 
+     */
+    public function getTicketText()
+    {
+        return $this->ticketText;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set imageLocation
+     *
+     * @param string $imageLocation
+     * @return Event
+     */
+    public function setImageLocation($imageLocation)
+    {
+        $this->imageLocation = $imageLocation;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageLocation
+     *
+     * @return string 
+     */
+    public function getImageLocation()
+    {
+        return $this->imageLocation;
+    }
+
+
+    public function getFormattedDate()
+    {
+        if ($this->date) {
+            return $this->date->format('d/m/y g:i A');
+        }
+        return null;
+    }
+}

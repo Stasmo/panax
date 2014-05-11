@@ -8,6 +8,7 @@
 	<td>{{ image.formattedUploadDate }}</td>
 	<td>{{ image.caption }}</td>
 	<td>{{ image.fileName }}</td>
+	<td>{% if not image.display %}not {% endif %}displayed</td>
 	<td><a href="/pics/edit/{{ image.id }}">Edit</a></td>
 	<td><a href="/pics/delete/{{ image.id }}">Delete</a></td>
 	<td><img src="{{ image.webLocation | imagine_filter('thumb_small') }}"></td>

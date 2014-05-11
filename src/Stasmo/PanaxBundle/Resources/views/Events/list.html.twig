@@ -1,0 +1,18 @@
+{% extends 'StasmoPanaxBundle::layout.html.twig' %}
+
+{% block body %}
+<h2>Events list</h2>
+<table class="table">
+	{% for event in events %}
+	<tr>
+		<td><a href="{{ event.eventLink }}">{{ event.name }}</a></td>
+		<td>{{ event.formattedDate }}</td>
+		<td>{{ event.description|raw }}</td>
+		<td><a href="{{ event.ticketLink }}">{{ event.ticketText }}</a></td>
+		<td>{{ event.imageLocation }}</td>
+		<td><a href="{{ path('edit_event', {id: event.id}) }}">Edit</a></td>
+		<td><a href="{{ path('delete_event', {id: event.id}) }}">Delete</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

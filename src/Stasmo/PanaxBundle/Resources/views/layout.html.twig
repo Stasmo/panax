@@ -1,11 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Panax</title>
-
+	<link rel="icon" href="/favicon.png" type="image/x-icon">
+	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" media="screen">
 	<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="/bundles/stasmopanax/fancybox/jquery.fancybox.css">
     {% stylesheets '@StasmoPanaxBundle/Resources/public/css/*' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
@@ -31,7 +34,7 @@
         {{ flashMessage }}
     </div>
 {% endfor %}
-<img id='penrose' src="/bundles/stasmopanax/images/penrose.svg" class='img-responsive pull-right'>
+<div id='penrose'></div>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-9">
@@ -67,8 +70,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-3 text-center hidden-xs">
-			<img id='penrose-header' src="/bundles/stasmopanax/images/penrose.svg">
+		<div class="col-sm-3 hidden-xs" style="padding-top: 20px">
+			<img id='penrose-header' class='img-responsive' src="/bundles/stasmopanax/images/penrose.png">
 		</div>
 	</div>
 	<div class="row">
@@ -137,9 +140,10 @@
 </div>
 
 <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery.js"></script>
+<script src="//code.jquery.com/jquery.js"></script>
 <!-- Include all JavaScripts, compiled by Assetic -->
 <script src="{{ asset('/js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="/bundles/stasmopanax/fancybox/jquery.fancybox.js"></script>
 {% javascripts '@StasmoPanaxBundle/Resources/public/js/*' %}
 <script type="text/javascript" src='{{ asset_url }}'></script>
 {% endjavascripts %}

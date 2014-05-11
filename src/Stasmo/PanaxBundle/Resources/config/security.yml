@@ -11,7 +11,7 @@ security:
             memory:
                 users:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: StasmoPanaxBundle2014!, roles: [ 'ROLE_ADMIN' ] }
+                    admin: { password: %admin_pass%, roles: [ 'ROLE_ADMIN' ] }
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
@@ -27,3 +27,8 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
         - { path: ^/pics/, roles: ROLE_ADMIN }
+        - { path: ^/posts/, roles: ROLE_ADMIN }
+        - { path: ^/events/, roles: ROLE_ADMIN }
+        - { path: ^/bio/, roles: ROLE_ADMIN }
+        - { path: ^/music/, roles: ROLE_ADMIN }
+        - { path: ^/videos/, roles: ROLE_ADMIN }

@@ -1,0 +1,19 @@
+{% extends 'StasmoPanaxBundle::layout.html.twig' %}
+
+{% block body %}
+<ul class="nav nav-pills">
+  <li class="active"><a href="{{ url('posts_new') }}">New Post</a></li>
+</ul>
+<table class="table">
+{% for post in posts %}
+<tr>
+	<td>{{ post.title }}</td>
+	<td>{{ post.body|raw }}</td>
+	<td>{{ post.formattedDate }}</td>
+	<td>{% if not post.display %}not {% endif %}displayed</td>
+	<td><a href="{{ path("posts_edit", {'id': post.id }) }}">Edit</a></td>
+	<td><a href="{{ path("posts_delete", {'id': post.id }) }}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

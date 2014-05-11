@@ -2,7 +2,11 @@
 {% block body %}
 <div class="row">
 	<div class="col-sm-12" id='videos'>
-		<iframe src="//www.youtube.com/embed/_KquXUZyvGE" frameborder="0" allowfullscreen></iframe>
+		{% for video in videos %}
+			<div class="video">
+				{{ video.embedString|raw }}
+			</div>
+		{% endfor %}
 	</div>
 </div>
 {% endblock %}

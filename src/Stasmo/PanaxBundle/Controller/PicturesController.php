@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Stasmo\PanaxBundle\Document\Image;
-use Stasmo\PanaxBundle\Document\ImageMeta;
+use Stasmo\PanaxBundle\Entity\ImageMeta;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @Route("/pics")
@@ -22,7 +24,7 @@ class PicturesController extends Controller
     public function indexAction()
     {
         $pics = $this
-                ->get('doctrine_mongodb')
+                ->get('doctrine')
                 ->getRepository('StasmoPanaxBundle:ImageMeta')
                 ->findBy([ 'display' => true ], [ 'uploadDate' => 'DESC' ]);
 
@@ -51,7 +53,7 @@ class PicturesController extends Controller
                 //$logger->info(print_r($form->getData(),1));
                 $path = $request->server->get('DOCUMENT_ROOT') . '/uploaded/pictures';
                 $date = new \DateTime();
-                $dm = $this->get('doctrine_mongodb')->getManager();
+                $dm = $this->get('doctrine')->getManager();
                 foreach($request->files as $uploadedFile) {
                     //$logger->info("uploaded" . print_r($uploadedFile,1));
                     $file = $uploadedFile['file'];
@@ -77,6 +79,10 @@ class PicturesController extends Controller
         return $this->render('StasmoPanaxBundle:Pictures:new.html.twig', array( 'form' => $form->createView() ));
     }
 
+    protected function clearCache()
+    {
+        
+    }
 
     /**
      * @Route("/list", name="list_images")
@@ -84,7 +90,7 @@ class PicturesController extends Controller
     public function listAction()
     {   
         $pics = $this
-                ->get('doctrine_mongodb')
+                ->get('doctrine')
                 ->getRepository('StasmoPanaxBundle:ImageMeta')
                 ->findBy([], [ 'uploadDate' => 'DESC' ]);
 
@@ -95,12 +101,13 @@ class PicturesController extends Controller
     /**
      * @Route("/edit/{id}", name="edit_image")
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
         $image = $this
-                ->get('doctrine_mongodb')
+                ->get('doctrine')
                 ->getRepository('StasmoPanaxBundle:ImageMeta')
                 ->findOneById($id);
+
         if (empty($image)) {
             $this->get('session')->getFlashBag()->add(
                 'error',
@@ -109,6 +116,7 @@ class PicturesController extends Controller
 
             return $this->redirect($this->generateUrl('list_images'));
         }
+        $imageNameBefore = $image->getFileName();
         $form = $this->createFormBuilder($image)
             ->setMethod('POST')
             ->add('caption', 'text', ['required' => false])
@@ -116,7 +124,6 @@ class PicturesController extends Controller
             ->add('display', 'checkbox', array( 'required' => false ))
             ->add('save', 'submit')
             ->getForm();
-        $request = $this->getRequest();
         if ($request->isMethod('POST')) {
             $form->submit($request);
 
@@ -124,22 +131,27 @@ class PicturesController extends Controller
                 //$logger->info(print_r($form->getData(),1));
                 $path = $request->server->get('DOCUMENT_ROOT') . '/uploaded/pictures';
                 $date = new \DateTime();
-                $dm = $this->get('doctrine_mongodb')->getManager();
+                $dm = $this->get('doctrine')->getManager();
 
-                if ($form->getData()->getFileName() !== $image->getFileName()) {
+                if ($form->getData()->getFileName() !== $imageNameBefore) {
                     if (file_exists($path . '/' . $form->getData()->getFileName())) {
                         $this->get('session')->getFlashBag()->add(
                             'error',
                             'A file with that name already exists'
                         );
 
-                        return $this->render('StasmoPanaxBundle:Pictures:new.html.twig', array( 'form' => $form->createView() ));
+                        return $this->render('StasmoPanaxBundle:Shared:edit.html.twig', array( 'form' => $form->createView() ));
                     }
 
-                    if (file_exists($path . '/' . $image->getFileName())) {
-                        $file = new File($path . '/' . $image->getFileName());
-                        $file->move($path . '/' . $form->getData()->getFileName());
+                    if (file_exists($path . '/' . $imageNameBefore)) {
+                        $file = new File($path . '/' . $imageNameBefore);
+                        $file->move($path . '/', $form->getData()->getFileName());
+                        $this->get('session')->getFlashBag()->add(
+                            'success',
+                            'Renamed file successfully'
+                        );
                     }
+
                 }
 
                 $dm->persist($form->getData());
@@ -159,10 +171,10 @@ class PicturesController extends Controller
     /**
      * @Route("/delete/{id}", name="delete_image")
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
         $image = $this
-                ->get('doctrine_mongodb')
+                ->get('doctrine')
                 ->getRepository('StasmoPanaxBundle:ImageMeta')
                 ->findOneById($id);
 
@@ -174,13 +186,13 @@ class PicturesController extends Controller
 
             return $this->redirect($this->generateUrl('list_images'));
         }
-        $request = $this->getRequest();
+
         $path = $request->server->get('DOCUMENT_ROOT') . '/uploaded/pictures';
         if (file_exists($path . '/' . $image->getFileName())) {
             unlink($path . '/' . $image->getFileName());
         }
 
-        $dm = $this->get('doctrine_mongodb')->getManager();
+        $dm = $this->get('doctrine')->getManager();
         $dm->remove($image);
         $dm->flush();
         $this->get('session')->getFlashBag()->add(
